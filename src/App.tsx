@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import NotFound from './pages/NotFound'
 import Header from './components/Header'
-import Recipes from './components/Recipes'
+import RecipesPage from './components/Recipes'
 import Recipe from './components/Recipe'
 
 import { ChakraProvider } from '@chakra-ui/react'
@@ -14,13 +14,33 @@ export default function App() {
         <Header />
         <Switch>
           <Route path="/recipes/create">
-            <Recipe />
+            <Recipe
+              {...{
+                _id: '1',
+                name: 'Pasta',
+                ingredients: [{ product: 'suger', quantity: 2, unit: 'kg' }],
+                preparationSteps: ['nadia1', 'nadia2'],
+                numberOfServings: 3,
+                cookingTime: 10,
+                createdAt: 1,
+              }}
+            />
           </Route>
           <Route path="/recipes/:recipeId">
-            <Recipe />
+            <Recipe
+              {...{
+                _id: '1',
+                name: 'Pasta',
+                ingredients: [{ product: 'suger', quantity: 2, unit: 'kg' }],
+                preparationSteps: ['nadia1', 'nadia2'],
+                numberOfServings: 3,
+                cookingTime: 10,
+                createdAt: 1,
+              }}
+            />
           </Route>
           <Route path="/recipes">
-            <Recipes />
+            <RecipesPage />
           </Route>
           <Redirect from="/" to="/recipes" />
           <Route component={NotFound} />
