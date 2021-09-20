@@ -16,3 +16,12 @@ export namespace Recipes {
     createdAt: number
   }
 }
+
+export namespace Forms {
+  export type CreateRecipe = {
+    name: string
+    cookingTime: number
+    preparationSteps: string[]
+    ingredients: Recipes.Ingredient[]
+  }
+}
