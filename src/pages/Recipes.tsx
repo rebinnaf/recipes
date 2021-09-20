@@ -111,7 +111,7 @@ export default function Recipes() {
         description="Add new recipe"
         category="New REcipe"
         buttonContent="Add New Recipe!"
-        targetPath="recipes/create"
+        targetPath="create"
       ></Card>
     </Wrap>
   )
