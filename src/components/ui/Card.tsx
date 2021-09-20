@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 type propsType = {
   image?: string
   title: string
-  subtitle: string
-  category: string
-  description: string
+  subtitle?: string
+  category?: string
+  description?: string
   buttonContent?: string
   targetPath?: string
 }
