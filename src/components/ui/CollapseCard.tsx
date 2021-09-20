@@ -1,15 +1,16 @@
-import { Box, Collapse, Button, useDisclosure } from '@chakra-ui/react'
+import { Box, Collapse, Button, useDisclosure, BoxProps } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
-type PropsType = {
+interface PropsType extends BoxProps {
   title?: string
   children: ReactNode
 }
-export default function CollapseCard({ title = 'Open', children }: PropsType) {
+export default function CollapseCard(props: PropsType) {
+  const { title = 'Open', children, ...rest } = props
   const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Box borderWidth="3px" borderRadius="lg" overflow="auto">
+    <Box borderWidth="3px" borderRadius="lg" overflow="auto" {...rest}>
       <Button className="block" w="100%" onClick={onToggle}>
         {title}
       </Button>

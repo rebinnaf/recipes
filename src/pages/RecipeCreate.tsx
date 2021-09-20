@@ -66,7 +66,7 @@ export default function RecipeCreate() {
                     defaultRow={''}
                   />
                 </CollapseCard>
-                <CollapseCard title="Ingredients">
+                <CollapseCard title="Ingredients" my="5">
                   <ArrayInputControl
                     name="ingredients"
                     label="ingredients"
