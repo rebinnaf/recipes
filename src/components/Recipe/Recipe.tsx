@@ -10,7 +10,7 @@ import { GET_RECIPE_QUERY } from '../../utils/queries'
 
 import Ingredients from './Ingredients'
 import PreparationSteps from './PreparationSteps'
-import moment from moment
+import moment from 'moment'
 
 export default function Recipe() {
   const params: any = useParams()
