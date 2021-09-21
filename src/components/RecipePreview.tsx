@@ -15,7 +15,7 @@ export default function RecipePreview({ _id, name, cookingTime, createdAt }: pro
       description={`${cookingTime} minutes`}
       category={name}
       buttonContent="Let's cook it!"
-      targetPath={`recipes/${_id}`}
+      targetPath={`${_id}`}
     ></Card>
   )
 }
