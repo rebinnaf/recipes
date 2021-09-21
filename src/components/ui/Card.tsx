@@ -73,7 +73,7 @@ export default function card({
               <IconButton
                 size="sm"
                 colorScheme="purple"
-                variant="outline"
+                  variant="ghost"
                 aria-label="Delete Recipe"
                 icon={<DeleteIcon />}
                 onClick={onDelete}
@@ -82,8 +82,8 @@ export default function card({
             <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
               <IconButton
                 size="sm"
-                colorScheme="purple"
-                variant="outline"
+                  colorScheme="blue"
+                  variant="ghost"
                 aria-label="Edit Recipe database"
                 icon={<EditIcon />}
                 onClick={() => history.push(`/recipes/${targetPath}/edit`)}
