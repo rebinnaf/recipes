@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import NotFound from './pages/NotFound'
 import Header from './components/Header'
-import RecipesPage from './pages/Recipes'
+import Recipes from './pages/Recipes'
 import RecipeCreate from './pages/RecipeCreate'
 import Recipe from './components/Recipe/Recipe'
 
@@ -17,14 +17,18 @@ export default function App() {
           <Route path="/recipes/create">
             <RecipeCreate />
           </Route>
+          <Route path="/recipes/search/:recipeName">
+            <Recipes searchMode={true} />
+          </Route>
           <Route path="/recipes/:recipeId/edit">
             <RecipeCreate editMode={true} />
           </Route>
           <Route path="/recipes/:recipeId">
             <Recipe />
           </Route>
+
           <Route path="/recipes">
-            <RecipesPage />
+            <Recipes />
           </Route>
           <Redirect from="/" to="/recipes" />
           <Route component={NotFound} />

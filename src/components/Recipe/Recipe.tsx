@@ -4,7 +4,6 @@ import { Recipes } from '../../utils/types'
 
 import { TimeIcon } from '@chakra-ui/icons'
 import DefaultImage from '../../assets/images/DefaultImage.jpg'
-// import { Query } from '@apollo/client/react/components'
 import { useQuery } from 'react-apollo'
 
 import { GET_RECIPE_QUERY } from '../../utils/queries'

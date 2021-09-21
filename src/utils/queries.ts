@@ -37,6 +37,7 @@ export const CREATE_RECIPE_MUTATION = gql`
     }
   }
 `
+
 export const EDIT_RECIPE_MUTATION = gql`
   mutation ($data: RecipeInsertInput!) {
     replaceOneRecipe(data: $data) {
@@ -49,6 +50,19 @@ export const DELETE_RECIPE_MUTATION = gql`
   mutation ($id: ObjectId!) {
     deleteOneRecipe(query: { _id: $id }) {
       _id
+    }
+  }
+`
+
+export const SEARCH_RECIPE_QUERY = gql`
+  query ($name: String!) {
+    recipes(query: { name: $name }) {
+      _id
+      cookingTime
+      createdAt
+      name
+      numberOfServings
+      preparationSteps
     }
   }
 `
