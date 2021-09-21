@@ -59,12 +59,12 @@ export default function ArrayInputcontrol(props: InputControlProps) {
               </IconButton>
             </Flex>
             {inputRows.map((rowData: InputValueProps, index: number) => (
-              <Flex key={index}>
+              <Flex key={`input-row-${index}`}>
                 <Center borderWidth="3px" px="3" align="center">
                   {index + 1}
                 </Center>
                 {typeof rowData === 'string' ? (
-                  <InputControl name={`${name}.${index}`} label="" {...rowData} />
+                  <InputControl name={`${name}.${index}`} label="" />
                 ) : (
                   <ObjectInputRow name={name} id={index} {...rowData} />
                 )}

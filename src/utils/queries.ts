@@ -12,3 +12,11 @@ export const GET_RECIPES_QUERY = gql`
   }
 `
 
+
+export const CREATE_RECIPE_MUTATION = gql`
+  mutation ($data: RecipeInsertInput!) {
+    insertOneRecipe(data: $data) {
+      _id
+    }
+  }
+`

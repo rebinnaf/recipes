@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Flex, Box, Heading, HStack } from '@chakra-ui/react'
+import { Flex, Box, Heading, HStack, Button } from '@chakra-ui/react'
 import { Forms } from '../utils/types'
+import { useMutation } from 'react-apollo'
+import { CREATE_RECIPE_MUTATION } from '../utils/queries'
 
-import { InputControl, NumberInputControl, ResetButton, SubmitButton } from 'formik-chakra-ui'
+import { InputControl, NumberInputControl, ResetButton } from 'formik-chakra-ui'
 import ArrayInputControl from '../components/ui/ArrayInputControl'
 import InputControlGroup from '../components/ui/InputControlGroup'
 import CollapseCard from '../components/ui/CollapseCard'
@@ -28,6 +30,8 @@ const validationSchema = Yup.object({
 const initialIngredient = { product: '', quantity: 0, unit: 'kg' }
 
 export default function RecipeCreate() {
+  const [createRecipe] = useMutation(CREATE_RECIPE_MUTATION)
+
   const initialValues: Forms.CreateRecipe = {
     name: '',
     cookingTime: 10,
@@ -43,8 +47,9 @@ export default function RecipeCreate() {
         <Box p="1">
           <Formik
             initialValues={initialValues}
-            onSubmit={(values, actions) => {
+            onSubmit={async (values, actions) => {
               console.log({ values, actions })
+              await createRecipe({ variables: { data: values } })
               alert(JSON.stringify(values, null, 2))
               actions.setSubmitting(false)
             }}
@@ -52,6 +57,7 @@ export default function RecipeCreate() {
           >
             {({ values }) => (
               <Form>
+                ${JSON.stringify(values)}
                 <Flex>
                   <InputControl name="name" label="Name" m="5" />
                   <InputControlGroup right="Min">
@@ -74,11 +80,10 @@ export default function RecipeCreate() {
                     defaultRow={initialIngredient}
                   />
                 </CollapseCard>
-
                 <HStack spacing="10px">
-                  <SubmitButton flex="1" colorScheme="purple" bg="purple.900">
+                  <Button type="submit" flex="1" colorScheme="purple" bg="purple.900">
                     Submit
-                  </SubmitButton>
+                  </Button>
                   <ResetButton flex="1" colorScheme="purple">
                     Reset
                   </ResetButton>
