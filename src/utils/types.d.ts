@@ -6,7 +6,6 @@ export namespace Recipes {
   }
 
   export type Recipe = {
-    __typename?: 'Recipe'
     _id: string
     name: string
     ingredients: Ingredient[]

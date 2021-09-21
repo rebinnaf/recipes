@@ -37,6 +37,13 @@ export const CREATE_RECIPE_MUTATION = gql`
     }
   }
 `
+export const EDIT_RECIPE_MUTATION = gql`
+  mutation ($data: RecipeInsertInput!) {
+    replaceOneRecipe(data: $data) {
+      _id
+    }
+  }
+`
 
 export const DELETE_RECIPE_MUTATION = gql`
   mutation ($id: ObjectId!) {

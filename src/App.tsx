@@ -17,6 +17,9 @@ export default function App() {
           <Route path="/recipes/create">
             <RecipeCreate />
           </Route>
+          <Route path="/recipes/:recipeId/edit">
+            <RecipeCreate editMode={true} />
+          </Route>
           <Route path="/recipes/:recipeId">
             <Recipe />
           </Route>

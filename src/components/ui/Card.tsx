@@ -87,7 +87,7 @@ export default function card({
                   variant="ghost"
                   aria-label="Edit Recipe database"
                   icon={<EditIcon />}
-                  onClick={() => history.push(`/recipes/${targetPath}/edit`)}
+                  onClick={() => history.push(`/${targetPath}/edit`)}
                 />
               </motion.div>
             </Flex>
