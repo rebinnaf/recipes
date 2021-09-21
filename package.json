@@ -40,8 +40,9 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "sh deploy.sh"
+
   },
   "eslintConfig": {
     "extends": [
@@ -76,5 +77,6 @@
     "postcss": "^7.0.36",
     "prettier": "^2.4.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
-  }
+  },
+  "homepage": "http://rebinnaf.github.io/recipes"
 }
