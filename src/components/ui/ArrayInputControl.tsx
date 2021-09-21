@@ -1,5 +1,5 @@
 import { Box, Flex, Center, IconButton } from '@chakra-ui/react'
-import { FieldArray } from 'formik'
+import { FieldArray, useField } from 'formik'
 import { InputControl } from 'formik-chakra-ui'
 import { FormControlProps } from '@chakra-ui/react'
 import { DeleteIcon, AddIcon } from '@chakra-ui/icons'
@@ -28,36 +28,52 @@ function ObjectInputRow({ name, id, ...fields }: InputRowProps) {
     </Flex>
   )
 }
-export default function ArrayInputcontrol(props: InputControlProps) {
-  const { name, label, inputRows, defaultRow } = props
-  if (inputRows.length === 0) {
-    return <div></div>
-  }
+
+type inputHeadingPropsType = InputControlProps & { push: (a: InputValueProps) => void }
+
+function InputHeading(props: inputHeadingPropsType) {
+  const { label, inputRows, defaultRow, push } = props
   const isString: Boolean = typeof inputRows[0] === 'string'
+
+  return (
+    <Flex>
+      <Center borderWidth="4px" px="3" align="center">
+        -
+      </Center>
+      {isString ? (
+        <Center flex="1" borderWidth="3px" px="3" align="center">
+          {label}
+        </Center>
+      ) : inputRows.length > 0 ? (
+        Object.keys(inputRows[0]).map((fieldTitle, index) => (
+          <Center key={`title-${index}`} flex="1" borderWidth="3px" px="3" align="center">
+            {fieldTitle}
+          </Center>
+        ))
+      ) : (
+        <Center flex="1" borderWidth="3px" px="3" align="center">
+          {label}
+        </Center>
+      )}
+      <IconButton onClick={() => push(defaultRow)} aria-label="add row" icon={<AddIcon />}>
+        Add Row
+      </IconButton>
+    </Flex>
+  )
+}
+
+export default function ArrayInputcontrol(props: InputControlProps) {
+  const { name, inputRows } = props
+  const [, { error, touched }] = useField(name)
+  // if (inputRows.length === 0) {
+  //   return <div></div>
+  // }
   return (
     <Box>
       <FieldArray name={name}>
         {({ push, remove }) => (
           <Box>
-            <Flex>
-              <Center borderWidth="4px" px="3" align="center">
-                -
-              </Center>
-              {isString ? (
-                <Center flex="1" borderWidth="3px" px="3" align="center">
-                  {label}
-                </Center>
-              ) : (
-                Object.keys(inputRows[0]).map((fieldTitle, index) => (
-                  <Center key={`title-${index}`} flex="1" borderWidth="3px" px="3" align="center">
-                    {fieldTitle}
-                  </Center>
-                ))
-              )}
-              <IconButton onClick={() => push(defaultRow)} aria-label="add row" icon={<AddIcon />}>
-                Add Row
-              </IconButton>
-            </Flex>
+            <InputHeading {...props} push={push}></InputHeading>
             {inputRows.map((rowData: InputValueProps, index: number) => (
               <Flex key={`input-row-${index}`}>
                 <Center borderWidth="3px" px="3" align="center">
@@ -74,6 +90,11 @@ export default function ArrayInputcontrol(props: InputControlProps) {
           </Box>
         )}
       </FieldArray>
+      {touched && error && (
+        <Box textAlign="left" color="red">
+          {error}
+        </Box>
+      )}
     </Box>
   )
 }

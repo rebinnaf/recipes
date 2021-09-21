@@ -18,17 +18,17 @@ import CollapseCard from '../components/ui/CollapseCard'
 
 const validationSchema = Yup.object({
   name: Yup.string().required(),
-  preparationSteps: Yup.array().required().min(2),
+  preparationSteps: Yup.array().required().min(2).of(Yup.string().required()),
   ingredients: Yup.array()
+    .required()
+    .min(2)
     .of(
       Yup.object().shape({
         product: Yup.string().required(),
         quantity: Yup.number().required(),
         unit: Yup.string().required(),
       })
-    )
-    .required()
-    .min(2),
+    ),
   cookingTime: Yup.number().required().min(5),
 })
 
