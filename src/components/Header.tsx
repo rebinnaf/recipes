@@ -29,7 +29,7 @@ export default function Header() {
           <Link to="/">All Recipes</Link>
         </Button>
         <Button colorScheme="purple" variant="outline" width={['50%', '50%', '50%', '10%']}>
-          <Link to="recipes/create">Create Recipe</Link>
+          <Link to="/recipes/create">Create Recipe</Link>
         </Button>
         <Flex width={['100%', '100%', '100%', '20%']}>
           <Input placeholder="Search Recipes by Name" size="sm" onChange={(e) => setSearchName(e.target.value)} />
