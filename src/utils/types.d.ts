@@ -12,7 +12,7 @@ export namespace Recipes {
     preparationSteps: string[]
     numberOfServings: number
     cookingTime: number
-    createdAt: number
+    createdAt: Date
   }
 }
 

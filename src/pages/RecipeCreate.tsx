@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Flex, Box, Heading, HStack, Button } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
+import moment from 'moment'
 
 import { Forms } from '../utils/types'
 import { useMutation, useQuery } from 'react-apollo'
@@ -72,6 +73,7 @@ export default function RecipeCreate({ editMode = false }: propsType) {
       await editRecipe({ variables: { data: editedRecipe } })
       history.push(`/recipes/${params.recipeId}`)
     } else {
+      values['createdAt'] = moment().toISOString()
       await createRecipe({ variables: { data: values } })
       history.push('/')
     }

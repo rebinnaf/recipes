@@ -2,12 +2,13 @@ import Card from './ui/Card'
 import { useMutation } from 'react-apollo'
 import { DELETE_RECIPE_MUTATION } from '../utils/queries'
 import { useHistory } from 'react-router'
+import moment from 'moment'
 
 type propTypes = {
   _id: string
   name: string
   cookingTime: number
-  createdAt: number
+  createdAt: Date
 }
 
 export default function RecipePreview({ _id, name, cookingTime, createdAt }: propTypes) {
@@ -22,11 +23,11 @@ export default function RecipePreview({ _id, name, cookingTime, createdAt }: pro
   return (
     <Card
       title={name}
-      subtitle={`${createdAt}`}
+      subtitle={`${createdAt ? moment(createdAt).fromNow() : ''}`}
       description={`${cookingTime} minutes`}
       category={name}
       buttonContent="Let's cook it!"
-      targetPath={`${_id}`}
+      targetPath={`recipes/${_id}`}
       onDelete={onDelete}
     ></Card>
   )
