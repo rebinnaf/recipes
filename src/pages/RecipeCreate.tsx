@@ -5,6 +5,7 @@ import { Flex, Box, Heading, HStack, Button } from '@chakra-ui/react'
 import { Forms } from '../utils/types'
 import { useMutation } from 'react-apollo'
 import { CREATE_RECIPE_MUTATION } from '../utils/queries'
+import { useHistory } from 'react-router'
 
 import { InputControl, NumberInputControl, ResetButton } from 'formik-chakra-ui'
 import ArrayInputControl from '../components/ui/ArrayInputControl'
@@ -31,6 +32,7 @@ const initialIngredient = { product: '', quantity: 0, unit: 'kg' }
 
 export default function RecipeCreate() {
   const [createRecipe] = useMutation(CREATE_RECIPE_MUTATION)
+  const history = useHistory()
 
   const initialValues: Forms.CreateRecipe = {
     name: '',
@@ -50,14 +52,13 @@ export default function RecipeCreate() {
             onSubmit={async (values, actions) => {
               console.log({ values, actions })
               await createRecipe({ variables: { data: values } })
-              alert(JSON.stringify(values, null, 2))
               actions.setSubmitting(false)
+              history.push('/')
             }}
             validationSchema={validationSchema}
           >
             {({ values }) => (
               <Form>
-                ${JSON.stringify(values)}
                 <Flex>
                   <InputControl name="name" label="Name" m="5" />
                   <InputControlGroup right="Min">
