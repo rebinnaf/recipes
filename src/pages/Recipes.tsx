@@ -16,6 +16,7 @@ export default function Recipes({ searchMode = false }: propsType) {
   const variables = searchMode ? { name: params.recipeName } : {}
   const { data, error, loading } = useQuery(query, {
     variables: variables,
+    fetchPolicy: 'network-only',
   })
   if (loading) return <div></div>
   if (error) return <div>{error}</div>
