@@ -4,7 +4,7 @@ import NotFound from './pages/NotFound'
 import Header from './components/Header'
 import RecipesPage from './pages/Recipes'
 import RecipeCreate from './pages/RecipeCreate'
-import Recipe from './components/Recipe'
+import Recipe from './components/Recipe/Recipe'
 
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -18,17 +18,7 @@ export default function App() {
             <RecipeCreate />
           </Route>
           <Route path="/recipes/:recipeId">
-            <Recipe
-              {...{
-                _id: '1',
-                name: 'Pasta',
-                ingredients: [{ product: 'suger', quantity: 2, unit: 'kg' }],
-                preparationSteps: ['nadia1', 'nadia2'],
-                numberOfServings: 3,
-                cookingTime: 10,
-                createdAt: 1,
-              }}
-            />
+            <Recipe />
           </Route>
           <Route path="/recipes">
             <RecipesPage />
