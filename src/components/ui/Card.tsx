@@ -68,6 +68,7 @@ export default function card({
           <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
             {title}
           </Box>
+          {onDelete && (
           <Flex>
             <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
               <IconButton
@@ -90,6 +91,7 @@ export default function card({
               />
             </motion.div>
           </Flex>
+          )}
         </Flex>
 
         <Box>{description}</Box>
