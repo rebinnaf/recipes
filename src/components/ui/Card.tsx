@@ -1,7 +1,8 @@
-import { Box, Avatar, Badge, Center, Button } from '@chakra-ui/react'
+import { Box, Avatar, Badge, Center, Button, IconButton, Flex } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 
 type propsType = {
   image?: string
@@ -36,14 +37,17 @@ export default function card({
         <Center mx="12" my="2">
           <Avatar size={image ? 'full' : '2xl'} minH="100px" minW="100px" name={title} src={image} />
           {hovered && (
-            <div className="flex justify-center items-center absolute w-full h-full bg-indigo-600 bg-opacity-25">
-              <motion.div className="h-0" animate={{ height: '100px' }}>
-                <Button colorScheme="purple" variant="solid" to={targetPath}>
-                  {buttonContent}
-                </Button>
-              </motion.div>
-            </div>
+            <Center className="absolute w-full h-full bg-indigo-600 bg-opacity-25">
+              <Box>
+                <motion.div className="h-0" animate={{ marginBottom: '60px' }}>
+                  <Button colorScheme="purple" variant="solid" to={targetPath}>
+                    {buttonContent}
+                  </Button>
+                </motion.div>
+              </Box>
+            </Center>
           )}
+          <Link to={targetPath} className="absolute inset-0" />
         </Center>
       </Box>
       <Center d="flex" alignItems="baseline">
@@ -55,13 +59,34 @@ export default function card({
         </Box>
       </Center>
       <Box mt="2" p="2" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
-          {title}
-        </Box>
+        <Flex justify="space-between">
+          <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
+            {title}
+          </Box>
+          <Flex>
+            <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
+              <IconButton
+                size="sm"
+                colorScheme="purple"
+                variant="outline"
+                aria-label="Delete Recipe"
+                icon={<DeleteIcon />}
+              />
+            </motion.div>
+            <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
+              <IconButton
+                size="sm"
+                colorScheme="purple"
+                variant="outline"
+                aria-label="Edit Recipe database"
+                icon={<EditIcon />}
+              />
+            </motion.div>
+          </Flex>
+        </Flex>
 
         <Box>{description}</Box>
       </Box>
-      <Link to={targetPath} className="absolute inset-0" />
     </Box>
   )
 }
