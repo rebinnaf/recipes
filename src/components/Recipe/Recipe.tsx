@@ -35,7 +35,7 @@ export default function Recipe() {
         <Heading size="md" bg="purple.900" color="purple.200">
           <Center>
             <Text as="cite">
-              Served {numberOfServings} Times (${createdAt ? `Created at ${moment(createdAt).fromNow()}` : ''})
+              Served {numberOfServings} Times ({createdAt ? `Created at ${moment(createdAt).fromNow()}` : ''})
             </Text>
           </Center>
         </Heading>
