@@ -11,21 +11,18 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
-const GITHUB_BASE_URL = 'https://eu-west-1.aws.realm.mongodb.com/api/client/v2.0/app/recipes-slphl/graphql'
+const SERVER_BASE_URL = process.env.SERVER_BASE_URL
 
 const getAuthorizationHeader = async () => {
-  const res = await fetch(
-    'https://eu-west-1.aws.realm.mongodb.com/api/client/v2.0/app/recipes-slphl/auth/providers/api-key/login',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        key: 'ypy6OoZTy30O7H08D8Ip5tQM6gQXJ0IrZ6PJrLjxhb9CGuSKFRtSQuCE6Z1FmsOW',
-      }),
-    }
-  )
+  const res = await fetch(process.env.SERVER_LOGIN_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      key: process.env.API_KEY,
+    }),
+  })
 
   if (res.ok) {
     const json = await res.json()
@@ -52,7 +49,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 })
 
 const httpLink = new HttpLink({
-  uri: GITHUB_BASE_URL,
+  uri: SERVER_BASE_URL,
 })
 
 const cache = new InMemoryCache()
