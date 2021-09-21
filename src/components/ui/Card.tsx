@@ -69,28 +69,28 @@ export default function card({
             {title}
           </Box>
           {onDelete && (
-          <Flex>
-            <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
-              <IconButton
-                size="sm"
-                colorScheme="purple"
+            <Flex>
+              <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
+                <IconButton
+                  size="sm"
+                  colorScheme="purple"
                   variant="ghost"
-                aria-label="Delete Recipe"
-                icon={<DeleteIcon />}
-                onClick={onDelete}
-              />
-            </motion.div>
-            <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
-              <IconButton
-                size="sm"
+                  aria-label="Delete Recipe"
+                  icon={<DeleteIcon />}
+                  onClick={onDelete}
+                />
+              </motion.div>
+              <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
+                <IconButton
+                  size="sm"
                   colorScheme="blue"
                   variant="ghost"
-                aria-label="Edit Recipe database"
-                icon={<EditIcon />}
-                onClick={() => history.push(`/recipes/${targetPath}/edit`)}
-              />
-            </motion.div>
-          </Flex>
+                  aria-label="Edit Recipe database"
+                  icon={<EditIcon />}
+                  onClick={() => history.push(`/recipes/${targetPath}/edit`)}
+                />
+              </motion.div>
+            </Flex>
           )}
         </Flex>
 
