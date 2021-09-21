@@ -1,6 +1,6 @@
 import { Box, Flex, Center, IconButton } from '@chakra-ui/react'
 import { FieldArray, useField } from 'formik'
-import { InputControl } from 'formik-chakra-ui'
+import { InputControl, TextareaControl } from 'formik-chakra-ui'
 import { FormControlProps } from '@chakra-ui/react'
 import { DeleteIcon, AddIcon } from '@chakra-ui/icons'
 
@@ -80,7 +80,7 @@ export default function ArrayInputcontrol(props: InputControlProps) {
                   {index + 1}
                 </Center>
                 {typeof rowData === 'string' ? (
-                  <InputControl name={`${name}.${index}`} label="" />
+                  <TextareaControl name={`${name}.${index}`} label="" />
                 ) : (
                   <ObjectInputRow name={name} id={index} {...rowData} />
                 )}
