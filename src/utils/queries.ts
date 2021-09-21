@@ -37,3 +37,11 @@ export const CREATE_RECIPE_MUTATION = gql`
     }
   }
 `
+
+export const DELETE_RECIPE_MUTATION = gql`
+  mutation ($id: ObjectId!) {
+    deleteOneRecipe(query: { _id: $id }) {
+      _id
+    }
+  }
+`

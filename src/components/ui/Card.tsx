@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { useHistory } from 'react-router'
 
 type propsType = {
   image?: string
@@ -12,6 +13,7 @@ type propsType = {
   description?: string
   buttonContent?: string
   targetPath?: string
+  onDelete?: () => void
 }
 export default function card({
   image,
@@ -21,8 +23,11 @@ export default function card({
   description,
   buttonContent = 'Open',
   targetPath = '/',
+  onDelete,
 }: propsType) {
   const [hovered, setHovered] = useState(false)
+  const history = useHistory()
+
   return (
     <Box
       width={['90%', '50%', '25%', '15%']}
@@ -71,6 +76,7 @@ export default function card({
                 variant="outline"
                 aria-label="Delete Recipe"
                 icon={<DeleteIcon />}
+                onClick={onDelete}
               />
             </motion.div>
             <motion.div animate={{ scale: [0.5, 1] }} transition={{ duration: 0.2, times: [0, 0.5, 1] }}>
@@ -80,6 +86,7 @@ export default function card({
                 variant="outline"
                 aria-label="Edit Recipe database"
                 icon={<EditIcon />}
+                onClick={() => history.push(`/recipes/${targetPath}/edit`)}
               />
             </motion.div>
           </Flex>
