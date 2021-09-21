@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.4.11",
     "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/react": "^1.6.7",
     "@craco/craco": "^6.3.0",
@@ -19,6 +18,8 @@
     "@types/react-router-dom": "^5.1.9",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
+    "apollo-link": "^1.2.14",
+    "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.17",
     "formik": "^2.2.9",
     "formik-chakra-ui": "^1.4.7",
