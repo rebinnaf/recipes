@@ -90,7 +90,7 @@ export default function ArrayInputcontrol(props: InputControlProps) {
           </Box>
         )}
       </FieldArray>
-      {touched && error && (
+      {touched && error && typeof error === 'string' && (
         <Box textAlign="left" color="red">
           {error}
         </Box>
