@@ -10,6 +10,7 @@ import { GET_RECIPE_QUERY } from '../../utils/queries'
 
 import Ingredients from './Ingredients'
 import PreparationSteps from './PreparationSteps'
+import moment from moment
 
 export default function Recipe() {
   const params: any = useParams()
@@ -34,7 +35,7 @@ export default function Recipe() {
         <Heading size="md" bg="purple.900" color="purple.200">
           <Center>
             <Text as="cite">
-              Served {numberOfServings} Times (Created at 1/2020/{createdAt})
+              Served {numberOfServings} Times (${createdAt ? `Created at ${moment(createdAt).fromNow()}` : ''})
             </Text>
           </Center>
         </Heading>
