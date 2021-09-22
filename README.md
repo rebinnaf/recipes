@@ -13,6 +13,8 @@ A small app to keep your delicious recipes
 - filter by category
 - write tests
 - improve search queries
+- add pagination to display recipes
+- performance improvements
 
 ## Features
 - add recipe
